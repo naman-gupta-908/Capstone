@@ -1,0 +1,18 @@
+img_height = 180
+img_width = 180
+
+from tensorflow.keras.preprocessing import image
+img = image.load_img('20rs.jpg',
+target_size=(img_height,img_width))
+img
+
+test_image=image.img_to_array(img)
+test_image=np.expand_dims(test_image, axis = 0)
+
+Classifier=load_model('currency_Classifier.h5')
+
+result =np.argmax(Classifier.predict(test_image), axis=1)
+result
+
+prediction = class_names[result[0]]
+prediction
